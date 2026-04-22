@@ -23,6 +23,16 @@ public class Banana extends Actor
         if(getX() <= 0) {
             resetBanana();
         }
+        if(isTouching(Hero.class)){
+            World world = getWorld();
+            Sadface sadFace = new Sadface();
+            world.addObject(sadFace, 300, 200);
+            
+            Actor hero = getOneIntersectingObject(Hero.class);
+            world.removeObject(hero);
+            world.removeObject(this);
+            Greenfoot.stop();
+        }
     }
     
     public void resetBanana() {
