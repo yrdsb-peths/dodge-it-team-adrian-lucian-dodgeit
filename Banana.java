@@ -50,21 +50,12 @@ public class Banana extends Actor
                 int y = 370 - getY();
                 world.removeObject(getOneObjectAtOffset(x,y,Heart.class));
             }
-            else if(Heart.lifeCount == 2)
+            else
             {
                 resetBanana();
                 World world = getWorld();
                 Heart.lifeCount --;
                 int x = 200 - getX();
-                int y = 370 - getY();
-                world.removeObject(getOneObjectAtOffset(x,y,Heart.class));
-            }
-            else 
-            {
-                resetBanana();
-                World world = getWorld();
-                Heart.lifeCount --;
-                int x = 100 - getX();
                 int y = 370 - getY();
                 world.removeObject(getOneObjectAtOffset(x,y,Heart.class));
             }
