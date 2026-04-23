@@ -14,7 +14,7 @@ public class Hero extends Actor
     boolean atTop = true;
     public void act()
     {
-        if(Greenfoot.mouseClicked(null)){
+        if(Greenfoot.mouseClicked(null) || "space".equals(Greenfoot.getKey())){
             atTop = !atTop;
         }
         if(atTop){
