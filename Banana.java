@@ -24,7 +24,7 @@ public class Banana extends Actor
             resetBanana();
         }
         if(isTouching(Hero.class)){
-            if(Heart.lifeCount == 0)
+            if(Heart.lifeCount == 1)
             {
                 World world = getWorld();
                 Sadface sadFace = new Sadface();
@@ -32,6 +32,12 @@ public class Banana extends Actor
                 
                 Actor hero = getOneIntersectingObject(Hero.class);
                 world.removeObject(hero);
+                
+                Heart.lifeCount --;
+                int x = 100 - getX();
+                int y = 370 - getY();
+                world.removeObject(getOneObjectAtOffset(x,y,Heart.class));
+                
                 world.removeObject(this);
                 Greenfoot.stop();
             }
