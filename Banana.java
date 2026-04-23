@@ -24,14 +24,45 @@ public class Banana extends Actor
             resetBanana();
         }
         if(isTouching(Hero.class)){
-            World world = getWorld();
-            Sadface sadFace = new Sadface();
-            world.addObject(sadFace, 300, 200);
-            
-            Actor hero = getOneIntersectingObject(Hero.class);
-            world.removeObject(hero);
-            world.removeObject(this);
-            Greenfoot.stop();
+            if(Heart.lifeCount == 0)
+            {
+                World world = getWorld();
+                Sadface sadFace = new Sadface();
+                world.addObject(sadFace, 300, 200);
+                
+                Actor hero = getOneIntersectingObject(Hero.class);
+                world.removeObject(hero);
+                world.removeObject(this);
+                Greenfoot.stop();
+            }
+            else if(Heart.lifeCount == 3)
+            {
+                resetBanana();
+                World world = getWorld();
+                Heart.lifeCount --;
+                int x = 300 - getX();
+                int y = 370 - getY();
+                world.removeObject(getOneObjectAtOffset(x,y,Heart.class));
+            }
+            else if(Heart.lifeCount == 2)
+            {
+                resetBanana();
+                World world = getWorld();
+                Heart.lifeCount --;
+                int x = 200 - getX();
+                int y = 370 - getY();
+                world.removeObject(getOneObjectAtOffset(x,y,Heart.class));
+            }
+            else 
+            {
+                resetBanana();
+                World world = getWorld();
+                Heart.lifeCount --;
+                int x = 100 - getX();
+                int y = 370 - getY();
+                world.removeObject(getOneObjectAtOffset(x,y,Heart.class));
+            }
+
         }
     }
     
