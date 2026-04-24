@@ -15,10 +15,17 @@ public class Banana extends Actor
         setImage(myImage);
     }
     
-    
+    boolean isNewRound = true;
+    int speed;
     public void act()
     {
-        move(-10);
+        if(isNewRound)
+        {
+            speed = (Greenfoot.getRandomNumber(11) + 8) * -1;
+            isNewRound = false;
+        }
+        
+        move(speed);
         
         if(getX() <= 0) {
             resetBanana();
@@ -70,5 +77,6 @@ public class Banana extends Actor
         } else {
             setLocation(600, 300);
         }
+        isNewRound = true;
     }
 }
