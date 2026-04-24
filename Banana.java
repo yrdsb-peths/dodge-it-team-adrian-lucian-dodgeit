@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 public class Banana extends Actor
 {
@@ -7,7 +8,7 @@ public class Banana extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     
-    private static GreenfootImage myImage;
+    private GreenfootImage myImage;
     
     public Banana()
     {
@@ -41,30 +42,36 @@ public class Banana extends Actor
                 world.removeObject(hero);
                 
                 Heart.lifeCount --;
-                int x = 100 - getX();
-                int y = 370 - getY();
-                world.removeObject(getOneObjectAtOffset(x,y,Heart.class));
+                List<Heart> hearts = world.getObjectsAt(100, 370, Heart.class);
+                if(!hearts.isEmpty()) 
+                {
+                world.removeObject(hearts.get(0));
+                }
                 
                 world.removeObject(this);
                 Greenfoot.stop();
             }
             else if(Heart.lifeCount == 3)
             {
-                resetBanana();
                 World world = getWorld();
                 Heart.lifeCount --;
-                int x = 300 - getX();
-                int y = 370 - getY();
-                world.removeObject(getOneObjectAtOffset(x,y,Heart.class));
+                List<Heart> hearts = world.getObjectsAt(300, 370, Heart.class);
+                if(!hearts.isEmpty()) 
+                {
+                world.removeObject(hearts.get(0));
+                }   
+                resetBanana();
             }
             else
             {
-                resetBanana();
                 World world = getWorld();
                 Heart.lifeCount --;
-                int x = 200 - getX();
-                int y = 370 - getY();
-                world.removeObject(getOneObjectAtOffset(x,y,Heart.class));
+                List<Heart> hearts = world.getObjectsAt(200, 370, Heart.class);
+                if(!hearts.isEmpty()) 
+                {
+                world.removeObject(hearts.get(0));
+                }
+                resetBanana();
             }
 
         }
